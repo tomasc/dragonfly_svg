@@ -1,6 +1,8 @@
-# DragonflySvg
+**work in progress**
 
-Dragonfly analyser and processor for SVGs.
+# Dragonfly SVG
+
+[Dragonfly](https://github.com/markevans/dragonfly) analyser and processor for SVGs.
 
 Uses the [nokogiri](http://nokogiri.org) gem for SVG parsing.
 
