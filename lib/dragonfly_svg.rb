@@ -1,3 +1,7 @@
-require "dragonfly_svg/svg_analyser"
-require "dragonfly_svg/svg_processor"
+require "dragonfly"
+require "dragonfly_svg/plugin"
 require "dragonfly_svg/version"
+
+Dragonfly.app.configure do
+  plugin :svg
+end
