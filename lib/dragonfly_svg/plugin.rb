@@ -11,6 +11,18 @@ module DragonflySvg
 
     def call app, opts={}
       app.add_analyser :svg_properties, DragonflySvg::Analysers::SvgProperties.new
+      app.add_analyser :width do |content|
+        content.analyse(:svg_properties)[:width]
+      end
+      app.add_analyser :height do |content|
+        content.analyse(:svg_properties)[:height]
+      end
+      app.add_analyser :aspect_ratio do |content|
+        attrs = content.analyse(:svg_properties)[:aspect_ration]
+      end
+      app.add_analyser :format do |content|
+        content.analyse(:svg_properties)[:id]
+      end
 
       app.add_processor :extend_ids, DragonflySvg::Processors::ExtendIds.new
       app.add_processor :remove_namespaces, DragonflySvg::Processors::RemoveNamespaces.new
