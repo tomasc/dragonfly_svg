@@ -18,11 +18,23 @@ module DragonflySvg
         content.analyse(:svg_properties)[:height]
       end
       app.add_analyser :aspect_ratio do |content|
-        attrs = content.analyse(:svg_properties)[:aspect_ration]
+        attrs = content.analyse(:svg_properties)
+        attrs[:width].to_f / attrs[:height].to_f
       end
-      app.add_analyser :format do |content|
+      app.add_analyser :portrait do |content|
+        attrs = content.analyse(:svg_properties)
+        attrs[:width] <= attrs[:height]
+      end
+      app.add_analyser :landscape do |content|
+        !content.analyse(:portrait)
+      end
+      app.add_analyser :id do |content|
         content.analyse(:svg_properties)[:id]
       end
+
+      # Aliases
+      app.define(:portrait?) { portrait }
+      app.define(:landscape?) { landscape }
 
       app.add_processor :extend_ids, DragonflySvg::Processors::ExtendIds.new
       app.add_processor :remove_namespaces, DragonflySvg::Processors::RemoveNamespaces.new
