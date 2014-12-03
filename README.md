@@ -60,7 +60,7 @@ svg.remove_namespaces
 
 ### SetDimensions
 
-Sets the dimensions of the SVG, takes two parameters: `width` and `height`
+Sets the dimensions of the SVG. Takes two parameters: `width` and `height`
 
 ```ruby
 svg.set_dimensions(210, 297)
@@ -68,7 +68,7 @@ svg.set_dimensions(210, 297)
 
 ### SetNamespace
 
-Sets the `xmlns` namespace of the SVG. Default is `http://www.w3.org/2000/svg` unless something is supplied
+Sets the `xmlns` namespace of the SVG. Default is `http://www.w3.org/2000/svg` unless something is supplied.
 
 ```ruby
 svg.set_namespace                     # xmlns="http://www.w3.org/2000/svg"
