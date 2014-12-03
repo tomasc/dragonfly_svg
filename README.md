@@ -18,6 +18,15 @@ Or install it yourself as:
 
     $ gem install dragonfly_svg
 
+## Plugin
+The analyser and processors are added by configuring the plugin
+
+```ruby
+Dragonfly.app.configure do
+  plugin :svg
+end
+```
+
 ## Analyser
 The analyser supplies the following methods:
 
