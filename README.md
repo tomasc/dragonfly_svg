@@ -1,5 +1,7 @@
 # Dragonfly SVG
 
+[![Build Status](https://travis-ci.org/tomasc/dragonfly_svg.svg)](https://travis-ci.org/tomasc/dragonfly_svg) [![Gem Version](https://badge.fury.io/rb/dragonfly_svg.svg)](http://badge.fury.io/rb/dragonfly_svg) [![Coverage Status](https://img.shields.io/coveralls/tomasc/dragonfly_svg.svg)](https://coveralls.io/r/tomasc/dragonfly_svg)
+
 [Dragonfly](https://github.com/markevans/dragonfly) analyser and processors for SVGs.
 
 Uses the [nokogiri](http://nokogiri.org) gem for SVG parsing.
