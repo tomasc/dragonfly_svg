@@ -1,4 +1,4 @@
-require "nokogiri"
+require 'nokogiri'
 
 module DragonflySvg
   module Analysers
@@ -11,7 +11,6 @@ module DragonflySvg
           width: node.get_attribute('width').to_f,
           height: node.get_attribute('height').to_f,
           id: node.get_attribute('id'),
-          aspect_ratio: node.get_attribute('width').to_f / node.get_attribute('height').to_f
         }
       end
 

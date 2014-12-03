@@ -24,10 +24,6 @@ module DragonflySvg
           svg_properties[:height].must_equal 300
         end
 
-        it ':aspect_ratio' do
-          svg_properties[:aspect_ratio].must_equal ratio
-        end
-
         it ':id' do
           svg_properties[:id].must_equal 'sample_id'
         end
