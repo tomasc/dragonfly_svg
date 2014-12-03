@@ -96,7 +96,7 @@ svg.set_viewbox(0, 0, 400, 600)       # viewBox="0 0 400 600"
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/dragonfly_svg/fork )
+1. Fork it ( https://github.com/tomasc/dragonfly_svg/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
