@@ -21,12 +21,14 @@ Or install it yourself as:
 ## Analyser
 The analyser supplies the following methods:
 
-- `svg.width`
-- `svg.height`
-- `svg.aspect_ratio`
-- `svg.id`
-- `svg.portrait?`
-- `svg.landscape?`
+```ruby
+svg.width
+svg.height
+svg.aspect_ratio
+svg.id
+svg.portrait?
+svg.landscape?
+```
 
 ## Processors
 
@@ -34,40 +36,52 @@ The analyser supplies the following methods:
 
 Adds a random string to the `id`. Helpful when embedding SVGs, in which case the `id` should be unique. You can also supply your own String.
 
-`svg.extend_ids`
-`svg.extend_ids('foo')`
+```ruby
+svg.extend_ids
+svg.extend_ids('foo')
+```
 
 ### RemoveNamespaces
 
 Removes the `xmlns` namespace from the SVG.
 
-`svg.remove_namespaces`
+```ruby
+svg.remove_namespaces
+```
 
 ### SetDimensions
 
 Sets the dimensions of the SVG, takes two parameters: `width` and `height`
 
-`svg.set_dimensions(210, 297)`
+```ruby
+svg.set_dimensions(210, 297)
+```
 
 ### SetNamespace
 
 Sets the `xmlns` namespace of the SVG. Default is `http://www.w3.org/2000/svg` unless something is supplied
 
-    svg.set_namespace                     # xmlns="http://www.w3.org/2000/svg"
-    svg.set_namespace('foo')              # xmlns="foo"
+```ruby
+svg.set_namespace                     # xmlns="http://www.w3.org/2000/svg"
+svg.set_namespace('foo')              # xmlns="foo"
+```
 
 ### SetPreserveAspectRatio
 
 Sets the `preserveAspectRatio` attribute of the SVG. Default is `xMinYMin meet` unless something is supplied.
 
-    svg.set_preserve_aspect_ratio         # preserveAspectRatio="xMinYMin meet"
-    svg.set_preserve_aspect_ratio('foo')  # preserveAspectRatio="foo"
+```ruby
+svg.set_preserve_aspect_ratio         # preserveAspectRatio="xMinYMin meet"
+svg.set_preserve_aspect_ratio('foo')  # preserveAspectRatio="foo"
+```
 
 ### SetViewBox
 
 Sets the `viewBox` attribute of the SVG. Takes four parameters: `min_x`, `min_y`, `width` and `height`.
 
-    svg.set_viewbox(0, 0, 400, 600)       # viewBox="0 0 400 600"
+```ruby
+svg.set_viewbox(0, 0, 400, 600)       # viewBox="0 0 400 600"
+```
 
 ## Contributing
 
