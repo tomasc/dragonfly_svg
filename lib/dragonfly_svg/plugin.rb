@@ -1,6 +1,7 @@
 require 'dragonfly_svg/analysers/svg_properties'
 require 'dragonfly_svg/processors/extend_ids'
 require 'dragonfly_svg/processors/remove_namespaces'
+require 'dragonfly_svg/processors/set_attribute'
 require 'dragonfly_svg/processors/set_dimensions'
 require 'dragonfly_svg/processors/set_namespace'
 require 'dragonfly_svg/processors/set_preserve_aspect_ratio'
@@ -38,6 +39,7 @@ module DragonflySvg
 
       app.add_processor :extend_ids, DragonflySvg::Processors::ExtendIds.new
       app.add_processor :remove_namespaces, DragonflySvg::Processors::RemoveNamespaces.new
+      app.add_processor :set_attribute, DragonflySvg::Processors::SetAttribute.new
       app.add_processor :set_dimensions, DragonflySvg::Processors::SetDimensions.new
       app.add_processor :set_namespace, DragonflySvg::Processors::SetNamespace.new
       app.add_processor :set_preserve_aspect_ratio, DragonflySvg::Processors::SetPreserveAspectRatio.new
