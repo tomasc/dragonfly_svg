@@ -11,15 +11,15 @@ module DragonflySvg
 
       let(:xpath) { "./*[name()='svg']" }
       let(:attribute_name) { 'style' }
-      let(:value) { 'margin: 50px;' }
+      let(:attribute_value) { 'margin: 50px;' }
 
       before do
-        processor.call(svg, xpath, attribute_name, value)
+        processor.call(svg, xpath, attribute_name, attribute_value)
       end
 
       it 'sets attribute' do
         Nokogiri::XML(svg.data).xpath(xpath).count.must_equal 1
-        Nokogiri::XML(svg.data).xpath(xpath).first.get_attribute('style').must_equal value
+        Nokogiri::XML(svg.data).xpath(xpath).first.get_attribute('style').must_equal attribute_value
       end
 
     end
