@@ -1,4 +1,10 @@
+require 'dragonfly_svg/analysers/base'
+require 'dragonfly_svg/analysers/aspect_ratio_analyser'
+require 'dragonfly_svg/analysers/height_analyser'
+require 'dragonfly_svg/analysers/landscape_analyser'
+require 'dragonfly_svg/analysers/portrait_analyser'
 require 'dragonfly_svg/analysers/svg_properties'
+require 'dragonfly_svg/analysers/width_analyser'
 require 'dragonfly_svg/processors/extend_ids'
 require 'dragonfly_svg/processors/remove_namespaces'
 require 'dragonfly_svg/processors/set_attribute'
@@ -12,23 +18,13 @@ module DragonflySvg
 
     def call app, opts={}
       app.add_analyser :svg_properties, DragonflySvg::Analysers::SvgProperties.new
-      app.add_analyser :width do |content|
-        content.analyse(:svg_properties)[:width]
-      end
-      app.add_analyser :height do |content|
-        content.analyse(:svg_properties)[:height]
-      end
-      app.add_analyser :aspect_ratio do |content|
-        attrs = content.analyse(:svg_properties)
-        attrs[:width].to_f / attrs[:height].to_f
-      end
-      app.add_analyser :portrait do |content|
-        attrs = content.analyse(:svg_properties)
-        attrs[:width] <= attrs[:height]
-      end
-      app.add_analyser :landscape do |content|
-        !content.analyse(:portrait)
-      end
+
+      DragonflySvg::Analysers::WidthAnalyser.new(app)
+      DragonflySvg::Analysers::HeightAnalyser.new(app)
+      DragonflySvg::Analysers::AspectRatioAnalyser.new(app)
+      DragonflySvg::Analysers::PortraitAnalyser.new(app)
+      DragonflySvg::Analysers::LandscapeAnalyser.new(app)
+
       app.add_analyser :id do |content|
         content.analyse(:svg_properties)[:id]
       end
