@@ -15,18 +15,59 @@ module DragonflySvg
 
       it 'adds #width' do
         svg.must_respond_to :width
+        svg.width.must_equal 200.0
       end
 
       it 'adds #height' do
         svg.must_respond_to :height
+        svg.height.must_equal 300.0
       end
 
       it 'adds #aspect_ratio' do
         svg.must_respond_to :aspect_ratio
+        svg.aspect_ratio.must_equal 0.6666666666666666
+      end
+
+      it 'adds #portrait' do
+        svg.must_respond_to :portrait
+        svg.portrait.must_equal true
+      end
+
+      it 'adds #landscape' do
+        svg.must_respond_to :landscape
+        svg.landscape.must_equal false
       end
 
       it 'adds #id' do
         svg.must_respond_to :id
+      end
+
+      describe "when handling non svg files" do
+        let(:png) { app.fetch_file(SAMPLES_DIR.join('sample.png')) }
+
+        before do
+          test_app.configure_with(:image_magick)
+        end
+
+        it 'still works to get the width' do
+          png.width.must_equal 1
+        end
+
+        it 'still works to get the height' do
+          png.height.must_equal 1
+        end
+
+        it 'still works to get the aspect ratio' do
+          png.aspect_ratio.must_equal 1.0
+        end
+
+        it 'still works to ask for portrait' do
+          png.portrait.must_equal true
+        end
+
+        it 'still works to ask for landscape' do
+          png.landscape.must_equal false
+        end
       end
     end
 
