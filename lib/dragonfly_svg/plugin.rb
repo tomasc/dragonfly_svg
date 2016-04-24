@@ -1,10 +1,12 @@
 require 'dragonfly_svg/analysers/base'
+
 require 'dragonfly_svg/analysers/aspect_ratio_analyser'
 require 'dragonfly_svg/analysers/height_analyser'
 require 'dragonfly_svg/analysers/landscape_analyser'
 require 'dragonfly_svg/analysers/portrait_analyser'
 require 'dragonfly_svg/analysers/svg_properties'
 require 'dragonfly_svg/analysers/width_analyser'
+
 require 'dragonfly_svg/processors/extend_ids'
 require 'dragonfly_svg/processors/remove_namespaces'
 require 'dragonfly_svg/processors/set_attribute'

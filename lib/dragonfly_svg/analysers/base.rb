@@ -1,5 +1,5 @@
 module DragonflySvg
-  SVG_MIME_TYPE = "image/svg+xml".freeze
+  SVG_MIME_TYPE = 'image/svg+xml'.freeze
 
   module Analysers
     class Base

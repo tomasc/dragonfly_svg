@@ -1,7 +1,6 @@
 module DragonflySvg
   module Analysers
     class HeightAnalyser < Base
-
       def initialize(app)
         original = app.analysers.items[:height]
         app.add_analyser(:height) do |content|

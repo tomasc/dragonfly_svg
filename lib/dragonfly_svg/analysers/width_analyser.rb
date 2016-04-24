@@ -1,7 +1,6 @@
 module DragonflySvg
   module Analysers
     class WidthAnalyser < Base
-
       def initialize(app)
         original = app.analysers.items[:width]
         app.add_analyser(:width) do |content|

@@ -1,7 +1,6 @@
 module DragonflySvg
   module Analysers
     class LandscapeAnalyser < Base
-
       def initialize(app)
         original = app.analysers.items[:landscape]
         app.add_analyser(:landscape) do |content|

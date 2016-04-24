@@ -1,7 +1,6 @@
 module DragonflySvg
   module Analysers
     class PortraitAnalyser < Base
-
       def initialize(app)
         original = app.analysers.items[:portrait]
         app.add_analyser(:portrait) do |content|

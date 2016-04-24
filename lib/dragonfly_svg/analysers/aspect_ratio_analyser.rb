@@ -1,7 +1,6 @@
 module DragonflySvg
   module Analysers
     class AspectRatioAnalyser < Base
-
       def initialize(app)
         original = app.analysers.items[:aspect_ratio]
         app.add_analyser(:aspect_ratio) do |content|
