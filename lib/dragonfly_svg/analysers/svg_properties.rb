@@ -3,24 +3,22 @@ require 'nokogiri'
 module DragonflySvg
   module Analysers
     class SvgProperties
-
-      def call content
+      def call(content)
         node = svg_node(content)
 
         {
           width: node.get_attribute('width').to_f,
           height: node.get_attribute('height').to_f,
-          id: node.get_attribute('id'),
+          id: node.get_attribute('id')
         }
       end
 
       private # =============================================================
 
-      def svg_node content
+      def svg_node(content)
         return unless doc = Nokogiri::XML(content.data)
         doc.xpath("//*[name()='svg']").first
       end
-
     end
   end
 end

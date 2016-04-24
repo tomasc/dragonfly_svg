@@ -3,8 +3,7 @@ require 'nokogiri'
 module DragonflySvg
   module Processors
     class RemoveNamespaces
-
-      def call content
+      def call(content)
         doc = Nokogiri::XML(content.data)
 
         doc.remove_namespaces!

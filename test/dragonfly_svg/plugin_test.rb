@@ -2,7 +2,6 @@ require 'test_helper'
 
 module DragonflySvg
   describe Plugin do
-
     let(:app) { test_app.configure_with(:svg) }
     let(:svg) { app.fetch_file(SAMPLES_DIR.join('sample.svg')) }
 
@@ -57,6 +56,5 @@ module DragonflySvg
         svg.must_respond_to :set_view_box
       end
     end
-
   end
 end

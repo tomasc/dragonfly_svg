@@ -3,7 +3,6 @@ require 'test_helper'
 module DragonflySvg
   module Processors
     describe ExtendIds do
-
       let(:app) { test_app.configure_with(:svg) }
       let(:processor) { DragonflySvg::Processors::ExtendIds.new }
       let(:analyser) { DragonflySvg::Analysers::SvgProperties.new }
@@ -22,7 +21,6 @@ module DragonflySvg
         processor.call(svg, 'foo')
         analyser.call(svg)[:id].must_equal "#{@orig_id}-foo"
       end
-
     end
   end
 end
