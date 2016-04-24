@@ -60,6 +60,14 @@ Removes the `xmlns` namespace from the SVG.
 svg.remove_namespaces
 ```
 
+### SetAttribute
+
+Allows to set attribute for specified `xpath`:
+
+```ruby
+svg.set_attribute('./*[name()="svg"]', 'style', 'margin: 50px;')
+```
+
 ### SetDimensions
 
 Sets the dimensions of the SVG. Takes two parameters: `width` and `height`
