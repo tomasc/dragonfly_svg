@@ -3,19 +3,10 @@ require 'nokogiri'
 module DragonflySvg
   module Processors
     class SetViewBox
-
-      def call content, min_x, min_y, width, height
-        doc = Nokogiri::XML(content.data)
-
+      def call(content, min_x, min_y, width, height)
         value = [min_x, min_y, width, height].map(&:to_s).join(' ')
-
-        if svg_node = doc.xpath("//*[name()='svg']").first
-          svg_node.set_attribute 'viewBox', value
-        end
-
-        content.update(doc.to_xml)
+        SetAttribute.new.call(content, "//*[name()='svg']", 'viewBox', value)
       end
-
     end
   end
 end

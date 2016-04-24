@@ -15,8 +15,7 @@ require 'dragonfly_svg/processors/set_view_box'
 
 module DragonflySvg
   class Plugin
-
-    def call app, opts={}
+    def call(app, _opts = {})
       app.add_analyser :svg_properties, DragonflySvg::Analysers::SvgProperties.new
 
       DragonflySvg::Analysers::WidthAnalyser.new(app)
@@ -41,7 +40,6 @@ module DragonflySvg
       app.add_processor :set_preserve_aspect_ratio, DragonflySvg::Processors::SetPreserveAspectRatio.new
       app.add_processor :set_view_box, DragonflySvg::Processors::SetViewBox.new
     end
-
   end
 end
 

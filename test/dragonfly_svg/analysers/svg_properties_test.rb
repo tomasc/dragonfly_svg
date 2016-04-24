@@ -3,7 +3,6 @@ require 'test_helper'
 module DragonflySvg
   module Analysers
     describe SvgProperties do
-
       let(:app) { test_app.configure_with(:svg) }
       let(:analyser) { DragonflySvg::Analysers::SvgProperties.new }
       let(:svg) { app.fetch_file(SAMPLES_DIR.join('sample.svg')) }
@@ -28,7 +27,6 @@ module DragonflySvg
           svg_properties[:id].must_equal 'sample_id'
         end
       end
-
     end
   end
 end

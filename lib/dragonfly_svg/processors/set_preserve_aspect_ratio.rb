@@ -3,17 +3,9 @@ require 'nokogiri'
 module DragonflySvg
   module Processors
     class SetPreserveAspectRatio
-
-      def call content, value='xMinYMin meet'
-        doc = Nokogiri::XML(content.data)
-
-        if svg_node = doc.xpath("//*[name()='svg']").first
-          svg_node.set_attribute 'preserveAspectRatio', value
-        end
-
-        content.update(doc.to_xml)
+      def call(content, value = 'xMinYMin meet')
+        SetAttribute.new.call(content, "//*[name()='svg']", 'preserveAspectRatio', value)
       end
-
     end
   end
 end

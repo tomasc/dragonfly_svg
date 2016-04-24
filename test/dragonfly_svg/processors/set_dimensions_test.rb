@@ -3,7 +3,6 @@ require 'test_helper'
 module DragonflySvg
   module Processors
     describe SetDimensions do
-
       let(:app) { test_app.configure_with(:svg) }
       let(:processor) { DragonflySvg::Processors::SetDimensions.new }
       let(:analyser) { DragonflySvg::Analysers::SvgProperties.new }
@@ -20,7 +19,6 @@ module DragonflySvg
       it 'sets height' do
         analyser.call(svg)[:height].must_equal 600
       end
-
     end
   end
 end

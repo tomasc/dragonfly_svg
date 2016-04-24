@@ -3,7 +3,6 @@ require 'test_helper'
 module DragonflySvg
   module Processors
     describe SetAttribute do
-
       let(:app) { test_app.configure_with(:svg) }
       let(:processor) { DragonflySvg::Processors::SetAttribute.new }
       let(:analyser) { DragonflySvg::Analysers::SvgProperties.new }
@@ -21,7 +20,6 @@ module DragonflySvg
         Nokogiri::XML(svg.data).xpath(xpath).count.must_equal 1
         Nokogiri::XML(svg.data).xpath(xpath).first.get_attribute('style').must_equal attribute_value
       end
-
     end
   end
 end
