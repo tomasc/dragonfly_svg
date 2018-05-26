@@ -14,37 +14,17 @@ module DragonflySvg
       # Analysers
       app.add_analyser :svg_properties, Analysers::SvgProperties.new
 
-      app.add_analyser :format do |content|
-        content.analyse(:svg_properties)['format']
+      %w[ format
+          width
+          height
+          id
+      ].each do |name|
+        app.add_analyser(name) { |c| c.analyse(:svg_properties)[name] }
       end
 
-      app.add_analyser :width do |content|
-        content.analyse(:svg_properties)['width']
-      end
-
-      app.add_analyser :height do |content|
-        content.analyse(:svg_properties)['height']
-      end
-
-      app.add_analyser :format do |content|
-        content.analyse(:svg_properties)['format']
-      end
-
-      app.add_analyser :aspect_ratio do |content|
-        content.analyse(:width).to_f / content.analyse(:height).to_f
-      end
-
-      app.add_analyser :portrait do |content|
-        content.analyse(:aspect_ratio) < 1.0
-      end
-
-      app.add_analyser :landscape do |content|
-        !content.analyse(:portrait)
-      end
-
-      app.add_analyser :id do |content|
-        content.analyse(:svg_properties)['id']
-      end
+      app.add_analyser(:aspect_ratio) { |c| c.analyse(:width).to_f / c.analyse(:height).to_f }
+      app.add_analyser(:portrait) { |c| c.analyse(:aspect_ratio) < 1.0 }
+      app.add_analyser(:landscape) { |c| !c.analyse(:portrait) }
 
       # Aliases
       app.define(:portrait?) { portrait }
