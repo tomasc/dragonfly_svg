@@ -14,20 +14,16 @@ module DragonflySvg
       # Analysers
       app.add_analyser :svg_properties, Analysers::SvgProperties.new
 
+      app.add_analyser :format do |content|
+        content.analyse(:svg_properties)['format']
+      end
+
       app.add_analyser :width do |content|
         content.analyse(:svg_properties)['width']
       end
 
       app.add_analyser :height do |content|
         content.analyse(:svg_properties)['height']
-      end
-
-      app.add_analyser :xres do |content|
-        content.analyse(:svg_properties)['xres']
-      end
-
-      app.add_analyser :yres do |content|
-        content.analyse(:svg_properties)['yres']
       end
 
       app.add_analyser :format do |content|

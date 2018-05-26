@@ -5,7 +5,8 @@ describe DragonflySvg::Plugin do
   let(:content) { app.fetch_file(SAMPLES_DIR.join('sample.svg')) }
 
   describe 'analysers' do
-    it { content.svg_properties.must_equal('width' => 200.0, 'height' => 300.0, 'id' => 'sample_id') }
+    it { content.svg_properties.must_equal('format' => 'svg', 'width' => 200.0, 'height' => 300.0, 'id' => 'sample_id') }
+    it { content.format.must_equal 'svg' }
     it { content.width.must_equal 200.0 }
     it { content.height.must_equal 300.0 }
     it { content.aspect_ratio.round(2).must_equal 0.67 }

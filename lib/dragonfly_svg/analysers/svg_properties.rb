@@ -9,6 +9,7 @@ module DragonflySvg
         return {} unless node = doc.xpath("//*[name()='svg']").first
 
         {
+          'format' => content.ext.to_s,
           'width' => node.get_attribute('width').to_f,
           'height' => node.get_attribute('height').to_f,
           'id' => node.get_attribute('id')
