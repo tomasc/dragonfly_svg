@@ -35,6 +35,7 @@ List of supported formats is available as:
 
 ```ruby
 DragonflySvg::SUPPORTED_FORMATS # => ["svg", "svgz", "svg.gz"]
+DragonflySvg::SUPPORTED_OUTPUT_FORMATS # => ["svg"]
 ```
 
 ## Analyser
