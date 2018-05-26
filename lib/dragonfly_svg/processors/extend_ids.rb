@@ -1,9 +1,12 @@
 require 'nokogiri'
+require 'securerandom'
 
 module DragonflySvg
   module Processors
     class ExtendIds
-      def call(content, append_str = SecureRandom.urlsafe_base64(8))
+      def call(content, append_str = SecureRandom.urlsafe_base64(8), options = {})
+        raise UnsupportedFormat unless SUPPORTED_FORMATS.include?(content.ext)
+
         doc = Nokogiri::XML(content.data)
 
         # nodes with id attributes

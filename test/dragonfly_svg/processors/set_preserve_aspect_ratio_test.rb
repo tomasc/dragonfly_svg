@@ -1,30 +1,18 @@
 require 'test_helper'
 
-module DragonflySvg
-  module Processors
-    describe SetPreserveAspectRatio do
-      let(:app) { test_app.configure_with(:svg) }
-      let(:processor) { DragonflySvg::Processors::SetPreserveAspectRatio.new }
-      let(:svg) { Dragonfly::Content.new(app, SAMPLES_DIR.join('sample.svg')) }
+describe DragonflySvg::Processors::SetPreserveAspectRatio do
+  let(:app) { test_app.configure_with(:svg) }
+  let(:content) { Dragonfly::Content.new(app, SAMPLES_DIR.join('sample.svg')) }
+  let(:processor) { DragonflySvg::Processors::SetPreserveAspectRatio.new }
 
-      describe 'with default value' do
-        it 'adds preserveAspectRatio attribute' do
-          processor.call(svg)
-          svg.data.must_include 'preserveAspectRatio'
-        end
+  describe 'with default value' do
+    before { processor.call(content) }
+    it { content.data.must_include 'preserveAspectRatio' }
+    it { content.data.must_include 'xMinYMin meet' }
+  end
 
-        it 'sets default value' do
-          processor.call(svg)
-          svg.data.must_include 'xMinYMin meet'
-        end
-      end
-
-      describe 'with specified value' do
-        it 'adds preserveAspectRatio with specified value' do
-          processor.call(svg, 'xMidYMid meet')
-          svg.data.must_include 'xMidYMid meet'
-        end
-      end
-    end
+  describe 'with specified value' do
+    before { processor.call(content, 'xMidYMid meet') }
+    it { content.data.must_include 'xMidYMid meet' }
   end
 end
