@@ -11,7 +11,7 @@ module DragonflySvg
           node.set_attribute attribute_name, value
         end
 
-        content.update(doc.to_xml)
+        content.update(doc.to_xml, 'name' => 'temp.svg')
       end
     end
   end

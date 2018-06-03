@@ -5,7 +5,7 @@ module DragonflySvg
     class SetNamespace
       def call(content, namespace = 'http://www.w3.org/2000/svg')
         raise UnsupportedFormat unless SUPPORTED_FORMATS.include?(content.ext)
-        
+
         doc = Nokogiri::XML(content.data)
 
         if svg_node = doc.xpath("//*[name()='svg']").first
@@ -15,7 +15,7 @@ module DragonflySvg
           end
         end
 
-        content.update(doc.to_xml)
+        content.update(doc.to_xml, 'name' => 'temp.svg')
       end
     end
   end

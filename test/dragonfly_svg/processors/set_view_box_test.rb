@@ -7,4 +7,8 @@ describe DragonflySvg::Processors::SetViewBox do
 
   before { processor.call(content, 0, 0, 400, 600) }
   it { content.data.must_include '0 0 400 600' }
+
+  describe 'tempfile has extension' do
+    it { content.tempfile.path.must_match /\.svg\z/ }
+  end
 end

@@ -14,4 +14,9 @@ describe DragonflySvg::Processors::SetNamespace do
     before { processor.call(content, 'custom_namespace') }
     it { content.data.must_include 'custom_namespace' }
   end
+
+  describe 'tempfile has extension' do
+    before { processor.call(content) }
+    it { content.tempfile.path.must_match /\.svg\z/ }
+  end
 end

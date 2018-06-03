@@ -17,4 +17,9 @@ describe DragonflySvg::Processors::ExtendIds do
     before { processor.call(content, 'foo') }
     it { analyser.call(content)['id'].must_equal "#{@orig_id}-foo" }
   end
+
+  describe 'tempfile has extension' do
+    before { processor.call(content) }
+    it { content.tempfile.path.must_match /\.svg\z/ }
+  end
 end

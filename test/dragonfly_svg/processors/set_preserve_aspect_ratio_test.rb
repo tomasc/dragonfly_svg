@@ -15,4 +15,9 @@ describe DragonflySvg::Processors::SetPreserveAspectRatio do
     before { processor.call(content, 'xMidYMid meet') }
     it { content.data.must_include 'xMidYMid meet' }
   end
+
+  describe 'tempfile has extension' do
+    before { processor.call(content) }
+    it { content.tempfile.path.must_match /\.svg\z/ }
+  end
 end

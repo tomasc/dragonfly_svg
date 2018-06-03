@@ -8,4 +8,8 @@ describe DragonflySvg::Processors::RemoveNamespaces do
   before { processor.call(content) }
 
   it { content.data.wont_include 'xmlns=' }
+
+  describe 'tempfile has extension' do
+    it { content.tempfile.path.must_match /\.svg\z/ }
+  end
 end

@@ -10,4 +10,8 @@ describe DragonflySvg::Processors::SetDimensions do
 
   it { analyser.call(content)['width'].must_equal 400 }
   it { analyser.call(content)['height'].must_equal 600 }
+
+  describe 'tempfile has extension' do
+    it { content.tempfile.path.must_match /\.svg\z/ }
+  end
 end

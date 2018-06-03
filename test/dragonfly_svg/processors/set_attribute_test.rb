@@ -14,4 +14,8 @@ describe DragonflySvg::Processors::SetAttribute do
 
   it { Nokogiri::XML(content.data).xpath(xpath).count.must_equal 1 }
   it { Nokogiri::XML(content.data).xpath(xpath).first.get_attribute('style').must_equal attribute_value }
+
+  describe 'tempfile has extension' do
+    it { content.tempfile.path.must_match /\.svg\z/ }
+  end
 end

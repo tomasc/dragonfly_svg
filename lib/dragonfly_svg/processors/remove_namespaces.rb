@@ -8,7 +8,7 @@ module DragonflySvg
 
         doc = Nokogiri::XML(content.data)
         doc.remove_namespaces!
-        content.update(doc.to_xml)
+        content.update(doc.to_xml, 'name' => 'temp.svg')
       end
     end
   end

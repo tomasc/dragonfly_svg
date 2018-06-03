@@ -21,7 +21,7 @@ module DragonflySvg
           node.set_attribute 'href', [node_href, append_str].join('-')
         end
 
-        content.update(doc.to_xml)
+        content.update(doc.to_xml, 'name' => 'temp.svg')
       end
     end
   end
