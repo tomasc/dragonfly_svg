@@ -10,10 +10,28 @@ module DragonflySvg
 
         {
           'format' => content.ext.to_s,
-          'width' => node.get_attribute('width').to_f,
-          'height' => node.get_attribute('height').to_f,
-          'id' => node.get_attribute('id')
+          'width' => width(node).to_f,
+          'height' => height(node).to_f,
+          'id' => id(node)
         }
+      end
+
+      private
+
+      def viewBox(node)
+        node.get_attribute('viewBox').to_s.split(/\s+/)
+      end
+
+      def width(node)
+        node.get_attribute('width') || viewBox(node)[2]
+      end
+
+      def height(node)
+        node.get_attribute('height') || viewBox(node)[3]
+      end
+
+      def id(node)
+        node.get_attribute('id')
       end
     end
   end
