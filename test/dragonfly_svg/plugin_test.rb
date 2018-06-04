@@ -24,6 +24,7 @@ describe DragonflySvg::Plugin do
     it { content.must_respond_to :set_dimensions }
     it { content.must_respond_to :set_namespace }
     it { content.must_respond_to :set_preserve_aspect_ratio }
+    it { content.must_respond_to :set_tag_value }
     it { content.must_respond_to :set_view_box }
   end
 end

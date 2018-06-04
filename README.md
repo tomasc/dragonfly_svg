@@ -76,6 +76,14 @@ Allows to set attribute for specified `xpath`:
 svg.set_attribute('./*[name()="svg"]', 'style', 'margin: 50px;')
 ```
 
+### SetTagValue
+
+Allows to set tag value for specified `xpath`:
+
+```ruby
+svg.set_tag_value('./*[name()="text"]', 'Updated text')
+```
+
 ### SetDimensions
 
 Sets the dimensions of the SVG. Takes two parameters: `width` and `height`

@@ -6,6 +6,7 @@ require 'dragonfly_svg/processors/set_attribute'
 require 'dragonfly_svg/processors/set_dimensions'
 require 'dragonfly_svg/processors/set_namespace'
 require 'dragonfly_svg/processors/set_preserve_aspect_ratio'
+require 'dragonfly_svg/processors/set_tag_value'
 require 'dragonfly_svg/processors/set_view_box'
 
 module DragonflySvg
@@ -37,6 +38,7 @@ module DragonflySvg
       app.add_processor :set_dimensions, Processors::SetDimensions.new
       app.add_processor :set_namespace, Processors::SetNamespace.new
       app.add_processor :set_preserve_aspect_ratio, Processors::SetPreserveAspectRatio.new
+      app.add_processor :set_tag_value, Processors::SetTagValue.new
       app.add_processor :set_view_box, Processors::SetViewBox.new
     end
   end
