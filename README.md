@@ -20,13 +20,21 @@ Or install it yourself as:
 
     $ gem install dragonfly_svg
 
-## Plugin
+## Usage
 The analyser and processors are added by configuring the plugin
 
 ```ruby
 Dragonfly.app.configure do
   plugin :svg
 end
+```
+
+## Supported Formats
+
+List of supported formats is available as:
+
+```ruby
+DragonflySvg::SUPPORTED_FORMATS # => ["svg", "svgz", "svg.gz"]
 ```
 
 ## Analyser
@@ -66,6 +74,14 @@ Allows to set attribute for specified `xpath`:
 
 ```ruby
 svg.set_attribute('./*[name()="svg"]', 'style', 'margin: 50px;')
+```
+
+### SetTagValue
+
+Allows to set tag value for specified `xpath`:
+
+```ruby
+svg.set_tag_value('./*[name()="text"]', 'Updated text')
 ```
 
 ### SetDimensions

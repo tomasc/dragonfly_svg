@@ -1,32 +1,19 @@
 require 'test_helper'
 
-module DragonflySvg
-  module Analysers
-    describe SvgProperties do
-      let(:app) { test_app.configure_with(:svg) }
-      let(:analyser) { DragonflySvg::Analysers::SvgProperties.new }
-      let(:svg) { app.fetch_file(SAMPLES_DIR.join('sample.svg')) }
+describe DragonflySvg::Analysers::SvgProperties do
+  let(:app) { test_app.configure_with(:svg) }
+  let(:analyser) { DragonflySvg::Analysers::SvgProperties.new }
+  let(:svg) { app.fetch_file(SAMPLES_DIR.join('sample.svg')) }
 
-      describe 'call' do
-        let(:svg_properties) { analyser.call(svg) }
-        let(:ratio) { 200.0 / 300.0 }
+  it { analyser.call(svg).must_be_kind_of Hash }
+  it { analyser.call(svg)['width'].must_equal 200 }
+  it { analyser.call(svg)['height'].must_equal 300 }
+  it { analyser.call(svg)['id'].must_equal 'sample_id' }
 
-        it 'returns Hash' do
-          svg_properties.must_be_kind_of Hash
-        end
+  describe 'when dimensions only in viewBox' do
+    let(:svg) { app.fetch_file(SAMPLES_DIR.join('sample_without_dimensions.svg')) }
 
-        it ':width' do
-          svg_properties[:width].must_equal 200
-        end
-
-        it ':height' do
-          svg_properties[:height].must_equal 300
-        end
-
-        it ':id' do
-          svg_properties[:id].must_equal 'sample_id'
-        end
-      end
-    end
+    it { analyser.call(svg)['width'].must_equal 200 }
+    it { analyser.call(svg)['height'].must_equal 300 }
   end
 end

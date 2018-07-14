@@ -1,16 +1,15 @@
 require 'test_helper'
 
-module DragonflySvg
-  module Processors
-    describe RemoveNamespaces do
-      let(:app) { test_app.configure_with(:svg) }
-      let(:processor) { DragonflySvg::Processors::RemoveNamespaces.new }
-      let(:svg) { Dragonfly::Content.new(app, SAMPLES_DIR.join('sample.svg')) }
+describe DragonflySvg::Processors::RemoveNamespaces do
+  let(:app) { test_app.configure_with(:svg) }
+  let(:content) { Dragonfly::Content.new(app, SAMPLES_DIR.join('sample.svg')) }
+  let(:processor) { DragonflySvg::Processors::RemoveNamespaces.new }
 
-      it 'removes namespaces' do
-        processor.call(svg)
-        svg.data.wont_include 'xmlns='
-      end
-    end
+  before { processor.call(content) }
+
+  it { content.data.wont_include 'xmlns=' }
+
+  describe 'tempfile has extension' do
+    it { content.tempfile.path.must_match /\.svg\z/ }
   end
 end

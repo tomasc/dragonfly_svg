@@ -1,26 +1,25 @@
 require 'test_helper'
 
-module DragonflySvg
-  module Processors
-    describe ExtendIds do
-      let(:app) { test_app.configure_with(:svg) }
-      let(:processor) { DragonflySvg::Processors::ExtendIds.new }
-      let(:analyser) { DragonflySvg::Analysers::SvgProperties.new }
-      let(:svg) { Dragonfly::Content.new(app, SAMPLES_DIR.join('sample.svg')) }
+describe DragonflySvg::Processors::ExtendIds do
+  let(:app) { test_app.configure_with(:svg) }
+  let(:content) { Dragonfly::Content.new(app, SAMPLES_DIR.join('sample.svg')) }
+  let(:analyser) { DragonflySvg::Analysers::SvgProperties.new }
+  let(:processor) { DragonflySvg::Processors::ExtendIds.new }
 
-      before do
-        @orig_id = analyser.call(svg)[:id]
-      end
+  before { @orig_id = analyser.call(content)['id'] }
 
-      it 'adds unique ID' do
-        processor.call(svg)
-        analyser.call(svg)[:id].wont_equal @orig_id
-      end
+  describe 'default' do
+    before { processor.call(content) }
+    it { analyser.call(content)['id'].wont_equal @orig_id }
+  end
 
-      it 'adds supplied string to ID' do
-        processor.call(svg, 'foo')
-        analyser.call(svg)[:id].must_equal "#{@orig_id}-foo"
-      end
-    end
+  describe 'supplied string' do
+    before { processor.call(content, 'foo') }
+    it { analyser.call(content)['id'].must_equal "#{@orig_id}-foo" }
+  end
+
+  describe 'tempfile has extension' do
+    before { processor.call(content) }
+    it { content.tempfile.path.must_match /\.svg\z/ }
   end
 end

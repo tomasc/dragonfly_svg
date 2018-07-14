@@ -1,9 +1,12 @@
 require 'nokogiri'
+require 'securerandom'
 
 module DragonflySvg
   module Processors
     class ExtendIds
-      def call(content, append_str = SecureRandom.urlsafe_base64(8))
+      def call(content, append_str = SecureRandom.urlsafe_base64(8), options = {})
+        raise UnsupportedFormat unless SUPPORTED_FORMATS.include?(content.ext)
+
         doc = Nokogiri::XML(content.data)
 
         # nodes with id attributes
@@ -18,7 +21,7 @@ module DragonflySvg
           node.set_attribute 'href', [node_href, append_str].join('-')
         end
 
-        content.update(doc.to_xml)
+        content.update(doc.to_xml, 'name' => 'temp.svg')
       end
     end
   end

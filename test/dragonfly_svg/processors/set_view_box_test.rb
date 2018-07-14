@@ -1,19 +1,14 @@
 require 'test_helper'
 
-module DragonflySvg
-  module Processors
-    describe SetViewBox do
-      let(:app) { test_app.configure_with(:svg) }
-      let(:processor) { DragonflySvg::Processors::SetViewBox.new }
-      let(:svg) { Dragonfly::Content.new(app, SAMPLES_DIR.join('sample.svg')) }
+describe DragonflySvg::Processors::SetViewBox do
+  let(:app) { test_app.configure_with(:svg) }
+  let(:content) { Dragonfly::Content.new(app, SAMPLES_DIR.join('sample.svg')) }
+  let(:processor) { DragonflySvg::Processors::SetViewBox.new }
 
-      before do
-        processor.call(svg, 0, 0, 400, 600)
-      end
+  before { processor.call(content, 0, 0, 400, 600) }
+  it { content.data.must_include '0 0 400 600' }
 
-      it 'sets view box' do
-        svg.data.must_include '0 0 400 600'
-      end
-    end
+  describe 'tempfile has extension' do
+    it { content.tempfile.path.must_match /\.svg\z/ }
   end
 end
