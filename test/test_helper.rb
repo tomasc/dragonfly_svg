@@ -5,7 +5,6 @@ require 'minitest/autorun'
 require 'minitest/reporters'
 require 'minitest/spec'
 
-require 'dragonfly'
 require 'dragonfly_svg'
 
 SAMPLES_DIR = Pathname.new(File.expand_path('../samples', __dir__))
