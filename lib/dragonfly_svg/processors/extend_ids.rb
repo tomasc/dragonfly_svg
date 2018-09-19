@@ -5,7 +5,8 @@ module DragonflySvg
   module Processors
     class ExtendIds
       def call(content, append_str = SecureRandom.urlsafe_base64(8), options = {})
-        raise UnsupportedFormat unless SUPPORTED_FORMATS.include?(content.ext)
+        raise UnsupportedFormat unless content.ext
+        raise UnsupportedFormat unless SUPPORTED_FORMATS.include?(content.ext.downcase)
 
         doc = Nokogiri::XML(content.data)
 

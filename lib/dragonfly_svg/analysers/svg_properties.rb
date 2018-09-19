@@ -4,7 +4,8 @@ module DragonflySvg
   module Analysers
     class SvgProperties
       def call(content)
-        return {} unless SUPPORTED_FORMATS.include?(content.ext)
+        return {} unless content.ext
+        return {} unless SUPPORTED_FORMATS.include?(content.ext.downcase)
         return {} unless doc = Nokogiri::XML(content.data)
         return {} unless node = doc.xpath("//*[name()='svg']").first
 

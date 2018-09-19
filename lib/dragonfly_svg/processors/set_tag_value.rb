@@ -4,7 +4,8 @@ module DragonflySvg
   module Processors
     class SetTagValue
       def call(content, xpath, value)
-        raise UnsupportedFormat unless SUPPORTED_FORMATS.include?(content.ext)
+        raise UnsupportedFormat unless content.ext
+        raise UnsupportedFormat unless SUPPORTED_FORMATS.include?(content.ext.downcase)
 
         doc = Nokogiri::XML(content.data)
         doc.xpath(xpath).each do |node|
