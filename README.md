@@ -115,7 +115,7 @@ svg.set_preserve_aspect_ratio('foo')  # preserveAspectRatio="foo"
 Sets the `viewBox` attribute of the SVG. Takes four parameters: `min_x`, `min_y`, `width` and `height`.
 
 ```ruby
-svg.set_viewbox(0, 0, 400, 600)       # viewBox="0 0 400 600"
+svg.set_view_box(0, 0, 400, 600)       # viewBox="0 0 400 600"
 ```
 
 ## Contributing
